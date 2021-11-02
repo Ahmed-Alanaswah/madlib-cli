@@ -1,8 +1,6 @@
 import re
 
-
 def read_template():
-
     file = open("assets/content_game.txt",'r')
     content = file.read()
     return content  
@@ -15,15 +13,12 @@ def parse_template(content):
   return arr
 #########################################
 def merge(content , words):  
-
-    arr = parse_template(content)  
-    
     return (re.sub(r'{[^}]*}','{}',content)).format(*words) 
 #########################################
-def copyFile_content(content):
-    print(content)
+def copyFile_content(finalResult):
+    print(finalResult)
     file = open('assets/result-game.txt','w')
-    file.write(content)
+    file.write(finalResult)
 #########################################
 if __name__ == "__main__":
    
@@ -32,6 +27,6 @@ if __name__ == "__main__":
     arr = parse_template(content)
     words=[]
     for i in range(len(arr)):
-        words.append(input("enter a {} ".format(arr[i])))
+        words.append(input("Enter a {} ".format(arr[i])))
     finalResult = merge(content, words)
     copyFile_content(finalResult)
